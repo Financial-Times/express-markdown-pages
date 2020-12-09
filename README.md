@@ -5,11 +5,16 @@
 An Express middleware that transforms plain text files into dynamic pages and fits right into your existing app.
 
 ```js
-const { markdownPages } = require('@financial-times/express-markdown-pages');
+const { MarkdownPages } = require('@financial-times/express-markdown-pages');
 
-app.get('/', markdownPages(), (request, response) => {
-	response.render('myMarkdownPage.ejs');
-});
+const markdownPages = new MarkdownPages();
+
+app.route('/*')
+	.get(markdownPages.middleware)
+	.get((request, response) => {
+		const html = myTemplate(response.locals);
+		response.send(html);
+	});
 ```
 
 [1]: https://github.com/Financial-Times/biz-ops-api#api
@@ -37,48 +42,60 @@ npm install -S @financial-times/express-markdown-pages
 
 ## Getting started
 
-This module provides a single `markdownPages` function which can be called with [options](#options).
+Start by creating a new instance of `MarkdownPages` and provide the appropriate [options](#options) for your app:
 
 ```js
-const expressMarkdownPages = require('@financial-times/express-markdown-pages');
+const { MarkdownPages } = require('@financial-times/express-markdown-pages');
 
-const markdownPages = expressMarkdownPages.create({
+const markdownPages = new MarkdownPages({
 	source: './content',
 	pathPrefix: '/docs',
 });
 ```
 
-This function returns a new [Express router] to insert into your app (_note:_ if you're adding the handler to a nested path then make sure to specify the `pathPrefix` option!):
+Next, add a new route to your app to serve your Markdown pages from, please note this must end with an asterisk (`*`) so that Express knows to route all requests to URLs beginning with this path through the `MarkdownPages` middleware:
 
 ```js
-const express = require('express');
-const app = express();
-
-app.get('/docs', markdownPages, () => { ... });
+app.route('/docs*');
 ```
 
-The provided route handler will find the pages which match the requests it receives and will append the page, navigation, taxonomy, or search result data to `response.locals`.
+Next, mount the `MarkdownPages` middleware to the route you just added so that it is applied to all `GET` requests:
 
 ```js
-app.get('/docs', markdownPages, (request, response) => {
-	console.log(response.locals); // logs: { page, navigation, taxonomies, results }
-});
+app.route('/docs*').get(markdownPages.middleware);
 ```
 
-Finally, using this data you can render your pages however you like:
+Next, add a final [route handler] function for `GET` requests to this route. This function will use the data added by the `MarkdownPages` middleware to render your pages:
 
 ```js
-app.get('/docs', scs, (request, response) => {
-	const html = myTemplate(response.locals);
-	response.send(html);
-});
+app.route('/docs*')
+	.get(markdownPages.middleware)
+	.get((request, response) => {
+		const html = myTemplate(response.locals);
+		response.send(html);
+	});
 ```
 
-[express router]: https://expressjs.com/en/4x/api.html#express.router
+Finally, you must initialise `MarkdownPages` so that it can find all of your files and construct its database. We recommend doing this on app startup so that you can spot any errors:
+
+```js
+try {
+	await markdownPages.init();
+
+	app.listen(PORT, () => {
+		console.log(`App listening on http://localhost:${PORT}`);
+	});
+} catch (error) {
+	console.error(`The app failed to start: ${error}`);
+	process.exit(1);
+}
+```
+
+[route handler]: https://expressjs.com/en/guide/routing.html#route-handlers
 
 ### Options
 
-The `markdownPages` function accepts the following parameters:
+The `MarkdownPages` constructor accepts the following parameters:
 
 | Option       | Type     | Required | Description                                                                                                         |
 | ------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
