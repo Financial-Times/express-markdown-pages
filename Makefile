@@ -28,6 +28,7 @@ install:
 build:
 
 run:
+	nodemon app.js
 
 test: unit-test
 
