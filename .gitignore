@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+.editorconfig
+.eslintcache
+.eslintignore
+.eslintrc.js
+.env
+.huskyrc.js
+.lintstagedrc.js
+.prettierignore
+.prettierrc.js
+npm-debug.log

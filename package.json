@@ -1,0 +1,35 @@
+{
+  "name": "@financial-times/express-markdown-pages",
+  "version": "1.0.0",
+  "description": "An Express middleware that transforms plain text files into dynamic pages and fits right into your existing app.",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "make verify",
+    "test": "make test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Financial-Times/express-markdown-pages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Financial-Times/express-markdown-pages/issues"
+  },
+  "homepage": "https://github.com/Financial-Times/express-markdown-pages",
+  "devDependencies": {
+    "@financial-times/rel-engage": "^8.0.0",
+    "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.6",
+    "express": "^4.17.0",
+    "jest": "^26.1.0"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "express": "^4.16.0"
+  },
+  "engines": {
+    "node": ">= 12.0.0"
+  }
+}

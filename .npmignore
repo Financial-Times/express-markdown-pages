@@ -1,0 +1,14 @@
+**/__tests__/**
+.circleci/
+.github/
+.vscode/
+.editorconfig
+.env
+.eslintcache
+.eslintignore
+.eslintrc.js
+.huskyrc.js
+.lintstagedrc.js
+.prettierignore
+.prettierrc.js
+Makefile
