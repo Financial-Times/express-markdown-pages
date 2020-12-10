@@ -26,7 +26,17 @@
     "jest": "^26.1.0",
     "nodemon": "^2.0.6"
   },
-  "dependencies": {},
+  "dependencies": {
+    "front-matter": "^4.0.2",
+    "glob": "^7.1.6",
+    "just-pick": "^2.1.0",
+    "just-zip-it": "^2.1.0",
+    "lokijs": "^1.5.11",
+    "nanoid": "^3.1.20",
+    "slugify": "^1.4.6",
+    "throat": "^5.0.0",
+    "url-join": "^4.0.0"
+  },
   "peerDependencies": {
     "express": "^4.16.0"
   },
