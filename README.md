@@ -9,12 +9,10 @@ const { MarkdownPages } = require('@financial-times/express-markdown-pages');
 
 const markdownPages = new MarkdownPages();
 
-app.route('/*')
-	.get(markdownPages.middleware)
-	.get((request, response) => {
-		const html = myTemplate(response.locals);
-		response.send(html);
-	});
+app.get('/*', markdownPages.middleware, (request, response) => {
+	const html = myTemplate(response.locals);
+	response.send(html);
+});
 ```
 
 [1]: https://github.com/Financial-Times/biz-ops-api#api
