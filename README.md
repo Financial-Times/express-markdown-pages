@@ -54,27 +54,25 @@ const markdownPages = new MarkdownPages({
 Next, add a new route to your app to serve your Markdown pages from, please note this must end with an asterisk (`*`) so that Express knows to route all requests to URLs beginning with this path through the `MarkdownPages` middleware:
 
 ```js
-app.route('/docs*');
+app.get('/docs*');
 ```
 
-Next, mount the `MarkdownPages` middleware to the route you just added so that it is applied to all `GET` requests:
+Next, add the `MarkdownPages` middleware to the route you just added:
 
 ```js
-app.route('/docs*').get(markdownPages.middleware);
+app.get('/docs*', markdownPages.middleware);
 ```
 
-Next, add a final [route handler] function for `GET` requests to this route. This function will use the data added by the `MarkdownPages` middleware to render your pages:
+Next, add a final [route handler] function. This function can use the data added by the `MarkdownPages` middleware to render your pages. Please note, if a page can't be found, or the incoming request is for a static file, then this function will not be called:
 
 ```js
-app.route('/docs*')
-	.get(markdownPages.middleware)
-	.get((request, response) => {
-		const html = myTemplate(response.locals);
-		response.send(html);
-	});
+app.get('/docs*', markdownPages.middleware, (request, response) => {
+	const html = myTemplate(response.locals);
+	response.send(html);
+});
 ```
 
-Finally, you must initialise `MarkdownPages` so that it can find all of your files and construct its database. We recommend doing this on app startup so that you can spot any errors:
+Finally, we recommend initialising `MarkdownPages` on app startup. This is not necessary but it will help you to spot any errors with your content immediately:
 
 ```js
 try {
