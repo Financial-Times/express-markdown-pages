@@ -33,6 +33,7 @@
     "just-zip-it": "^2.1.0",
     "lokijs": "^1.5.11",
     "nanoid": "^3.1.20",
+    "pluralize": "^8.0.0",
     "slugify": "^1.4.6",
     "throat": "^5.0.0",
     "url-join": "^4.0.0"
