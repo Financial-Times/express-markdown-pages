@@ -8,14 +8,11 @@ const { MarkdownPages } = require('./lib');
 
 const markdownPages = new MarkdownPages({
 	source: './docs',
-	pathPrefix: '/docs',
 });
 
-app.route('/docs*')
-	.get(markdownPages.middleware)
-	.get((_, response) => {
-		response.send(response.locals);
-	});
+app.get('*', markdownPages.middleware, (_, response) => {
+	response.send(response.locals);
+});
 
 markdownPages
 	.init()
