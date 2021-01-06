@@ -28,9 +28,9 @@ install:
 build:
 
 run:
-	nodemon app.js
+	npx nodemon app.js
 
 test: unit-test
 
 unit-test:
-	jest $(if $(CI),--runInBand,--watch)
+	npx jest $(if $(CI),--runInBand,--watch)
