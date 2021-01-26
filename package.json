@@ -35,10 +35,10 @@
     "lokijs": "^1.5.10",
     "nanoid": "^3.1.20",
     "pluralize": "^8.0.0",
+    "proper-url-join": "^2.1.1",
     "qs": "^6.9.4",
     "slugify": "^1.4.6",
-    "throat": "^5.0.0",
-    "url-join": "^4.0.0"
+    "throat": "^5.0.0"
   },
   "peerDependencies": {
     "express": "^4.16.0"
