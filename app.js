@@ -8,10 +8,11 @@ const { MarkdownPages } = require('./lib');
 
 const markdownPages = new MarkdownPages({
 	source: './docs',
+	taxonomies: ['subjects', 'technologies'],
 });
 
 app.get('*', markdownPages.middleware, (_, response) => {
-	response.send(response.locals);
+	response.send(response.locals.markdownPages);
 });
 
 markdownPages
@@ -22,6 +23,6 @@ markdownPages
 		});
 	})
 	.catch(error => {
-		console.error(`The application failed to start: ${error}`); // eslint-disable-line no-console
+		console.error(`The application failed to start:`, error); // eslint-disable-line no-console
 		process.exit(1); // eslint-disable-line unicorn/no-process-exit
 	});
