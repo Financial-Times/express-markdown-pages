@@ -25,6 +25,7 @@
     "@types/lokijs": "^1.5.3",
     "express": "^4.17.0",
     "jest": "^26.1.0",
+    "jsdoc-to-markdown": "^6.0.1",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
