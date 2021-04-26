@@ -104,6 +104,16 @@ The `MarkdownPages` constructor accepts the following parameters:
 | `pathPrefix` | String   |          | Prepends all generated URL paths with this prefix (which should match the route mounted, minus asterisk.) Defaults to `"/"`. |
 | `taxonomies` | String[] |          | Frontmatter properties to use as a list of tags used to create logical groupings of content. Defaults to `["tags"]`          |
 
+### Debugging
+
+This package implements [debug] to provide detailed logs. You can enable these by setting the `DEBUG` environment variable:
+
+```shell
+DEBUG=express:markdownPages node app.js
+```
+
+[debug]: https://www.npmjs.com/package/debug
+
 ## Page Data
 
 The middleware provided by this package will append a `markdownPages` property to the [`response.locals` object](https://expressjs.com/en/4x/api.html#res.locals). This object includes the content for the requested page and navigation hierarchy, and for index pages it will also include any taxonomies for child pages, and child pages which match any selected filters. See [type definitions](#type-definitions) for more information.
