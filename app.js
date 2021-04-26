@@ -4,7 +4,7 @@ const express = require('express');
 
 const app = express();
 
-const { MarkdownPages } = require('./lib');
+const { MarkdownPages } = require('.');
 
 const markdownPages = new MarkdownPages({
 	source: './docs',
@@ -17,9 +17,12 @@ app.get('*', markdownPages.middleware, (_, response) => {
 
 markdownPages
 	.init()
-	.then(() => {
+	.then(db => {
+		app.locals.markdownPagesDB = db;
+
 		app.listen(PORT, () => {
 			console.log(`Listening on http://localhost:${PORT}`); // eslint-disable-line no-console
+			console.log(`Loaded ${db.getCollection('pages').count()} pages`); // eslint-disable-line no-console
 		});
 	})
 	.catch(error => {

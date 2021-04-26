@@ -73,14 +73,16 @@ app.get('/docs*', markdownPages.middleware, (request, response) => {
 });
 ```
 
-Finally, we recommend initialising `MarkdownPages` on app startup. This is not necessary but it will help you to spot any errors with your content immediately:
+Finally, we recommend initialising `MarkdownPages` on app startup. This is not necessary but it will help you to spot any errors with your content and you can also store a reference to the created database for access later:
 
 ```js
 try {
-	await markdownPages.init();
+	const db = await markdownPages.init();
+	const pageCount = db.getCollection('pages').count();
 
 	app.listen(PORT, () => {
 		console.log(`App listening on http://localhost:${PORT}`);
+		console.log(`Successfully loaded ${pageCount} pages`);
 	});
 } catch (error) {
 	console.error('The app failed to start: ', error);
