@@ -32,6 +32,7 @@
     "debug": "^4.3.1",
     "front-matter": "^4.0.2",
     "glob": "^7.1.6",
+    "is-object": "^1.0.2",
     "just-pick": "^2.1.0",
     "just-zip-it": "^2.1.0",
     "lokijs": "^1.5.10",
