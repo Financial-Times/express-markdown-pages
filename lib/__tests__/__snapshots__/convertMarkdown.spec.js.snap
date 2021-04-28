@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lib/convertMarkdown .markdownToHTML() does not output any HTML markup 1`] = `
+"<h1 id=\\"python-basics\\">Python basics</h1>
+<p>Python is a nice language, you can add stuff. Bla bla bla.</p>
+<p>Lets jump into an exercise :</p>
+<hr>
+<p>It’s dead simple, <code>c</code> must be the sum of <code>a</code> and <code>b</code></p>
+<div data-o-component=\\"o-syntax-highlight\\">
+				<pre><code class=\\"o-syntax-highlight--py\\">a = 1
+b = 2</code></pre>
+			</div><div data-o-component=\\"o-syntax-highlight\\">
+				<pre><code class=\\"o-syntax-highlight--py\\">a = 1
+b = 2
+c = a + b</code></pre>
+			</div><div data-o-component=\\"o-syntax-highlight\\">
+				<pre><code class=\\"o-syntax-highlight--py\\">assert(c, 3)</code></pre>
+			</div><hr>
+<p>Some more nice content ….</p>
+<p><a href=\\"http://gitbook.io\\">Cool stuff</a></p>
+<p><a href=\\"./xyz/file-name\\">Link to another Markdown file</a></p>
+"
+`;
