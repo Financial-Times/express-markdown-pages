@@ -33,8 +33,7 @@ run:
 test: unit-test
 
 unit-test:
-	npx jest $(if $(CI),--runInBand,--watch) \
-		--testPathIgnorePatterns __fixtures __helpers__
+	npx jest $(if $(CI),--runInBand,--watch)
 
 typedefs:
 	npx jsdoc2md -g none -d 3 lib/typedefs.js
