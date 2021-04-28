@@ -1,0 +1,32 @@
+[
+  {
+    "id": "001",
+    "filePath": "docs/section 1/images/useful diagram.png",
+    "fileName": "useful diagram.png",
+    "slug": "/section-1/images/useful-diagram.png"
+  },
+  {
+    "id": "002",
+    "filePath": "docs/section 1/images/brand logo.gif",
+    "fileName": "brand logo.gif",
+    "slug": "/section-1/images/brand-logo.gif"
+  },
+  {
+    "id": "003",
+    "filePath": "docs/Section 2/PieChart.png",
+    "fileName": "PieChart.png",
+    "slug": "/section-2/pie-chart.png"
+  },
+  {
+    "id": "004",
+    "filePath": "docs/Section 2/Another chart.svg",
+    "fileName": "Another chart.svg",
+    "slug": "/section-2/another-chart.svg"
+  },
+  {
+    "id": "005",
+    "filePath": "docs/A nice photo.jpg",
+    "fileName": "A nice photo.jpg",
+    "slug": "/a-nice-photo.jpg"
+  }
+]
