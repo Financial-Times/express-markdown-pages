@@ -30,3 +30,5 @@ Some more nice content ....
 [Cool stuff](http://gitbook.io)
 
 [Link to another Markdown file](./xyz/File%20name.md)
+
+And a test of HTML entities & "smart quotes"
