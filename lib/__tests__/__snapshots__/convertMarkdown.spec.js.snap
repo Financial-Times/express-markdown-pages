@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`lib/convertMarkdown .markdownToHTML() does not output any HTML markup 1`] = `
+exports[`lib/convertMarkdown .markdownToHTML() outputs HTML markup 1`] = `
 "<h1 id=\\"python-basics\\">Python basics</h1>
 <p>Python is a nice language, you can add stuff. Bla bla bla.</p>
 <p>Lets jump into an exercise :</p>
