@@ -4,18 +4,11 @@ const imagesData = require('../fixtures/imagesData.json');
 
 // NOTE: I looked into serializing and loading a real DB but it's far
 // more confusing and means the fixture would require regular updates.
-function createTestDB() {
+module.exports = function createTestDB() {
 	const db = new Loki('test.db');
 
-	const pages = db.addCollection('pages');
-
-	pages.insert(pagesData);
-
-	const images = db.addCollection('images');
-
-	images.insert(imagesData);
+	db.addCollection('pages').insert(pagesData);
+	db.addCollection('images').insert(imagesData);
 
 	return db;
-}
-
-module.exports = { createTestDB };
+};
