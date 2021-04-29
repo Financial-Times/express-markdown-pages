@@ -1,6 +1,6 @@
 ---
-title: 'This is the title'
-description: 'This is a description'
+title: Python basics
+description: Python is a nice language
 tags:
     - foo
     - bar
