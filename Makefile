@@ -35,5 +35,5 @@ test: unit-test
 unit-test:
 	npx jest $(if $(CI),--runInBand,--watch)
 
-typedefs:
-	npx jsdoc2md -g none -d 3 lib/typedefs.js
+jsdoc:
+	npx jsdoc2md -c jsdoc.json lib/MarkdownPages.js lib/sharedTypes.js > docs/jsdoc.md
