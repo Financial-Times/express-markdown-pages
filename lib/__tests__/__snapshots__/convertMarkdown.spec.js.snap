@@ -20,5 +20,11 @@ c = a + b</code></pre>
 <p><a href=\\"http://gitbook.io\\">Cool stuff</a></p>
 <p><a href=\\"./xyz/file-name\\">Link to another Markdown file</a></p>
 <p>And a test of HTML entities &amp; “smart quotes”</p>
+<p>And we also need to describe emoji characters like these:</p>
+<ul>
+<li>  <span role=\\"img\\" aria-label=\\"dog\\">🐶</span></li>
+<li>  <span role=\\"img\\" aria-label=\\"smile cat\\">😸</span></li>
+<li>  <span role=\\"img\\" aria-label=\\"hankey\\">💩</span></li>
+</ul>
 "
 `;

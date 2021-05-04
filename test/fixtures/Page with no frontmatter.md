@@ -32,3 +32,9 @@ Some more nice content ....
 [Link to another Markdown file](./xyz/File%20name.md)
 
 And a test of HTML entities & "smart quotes"
+
+And we also need to describe emoji characters like these:
+
+-   🐶
+-   😸
+-   💩
