@@ -44,7 +44,8 @@
     "slug": "/about-us/our-people/romeo-schmitt",
     "index": null,
     "parentID": "003",
-    "childIDs": []
+    "childIDs": [],
+    "draft": true
   },
   {
     "title": "Services",
