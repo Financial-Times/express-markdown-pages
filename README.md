@@ -73,7 +73,7 @@ app.get('/docs*', markdownPages.middleware, (request, response) => {
 });
 ```
 
-Finally, we recommend initialising `MarkdownPages` on app startup. This is not necessary but it will help you to spot any errors with your content and you can also store a reference to the created database for access later:
+Finally, we recommend initialising `MarkdownPages` on app startup. This is not strictly necessary but it will help you to spot any errors with your content and you can also store a reference to the created database for access later:
 
 ```js
 try {
@@ -96,13 +96,7 @@ Now you're up and running you can get on with using [the data](#page-data) in yo
 
 ### Options
 
-The `MarkdownPages` constructor accepts the following parameters:
-
-| Option       | Type     | Required | Description                                                                                                                  |
-| ------------ | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `source`     | String   |          | The directory containing your Markdown and image content files. Defaults to `"./pages"`.                                     |
-| `pathPrefix` | String   |          | Prepends all generated URL paths with this prefix (which should match the route mounted, minus asterisk.) Defaults to `"/"`. |
-| `taxonomies` | String[] |          | Frontmatter properties to use as a list of tags used to create logical groupings of content. Defaults to `["tags"]`          |
+See the [JSDoc type definitions](docs/jsdoc.md#Options) for more information about configuration options.
 
 ### Debugging
 
@@ -114,8 +108,12 @@ DEBUG=express:markdownPages node app.js
 
 [debug]: https://www.npmjs.com/package/debug
 
-### Page Data
+### Page data
 
 The middleware provided by this package will append a `markdownPages` property to the [`response.locals` object](https://expressjs.com/en/4x/api.html#res.locals) when a page matching the request is found. This object includes the content for the requested page and navigation hierarchy, and for index pages it will also include any taxonomies for child pages, and child pages which match any selected filters.
 
-See the [JSDoc type definitions](docs/jsdoc.md#PageData) for more information.
+See the [JSDoc type definitions](docs/jsdoc.md#PageData) for more information about page data.
+
+### Writing content
+
+See the [writing content guide](docs/writing-content.md) for more information about the syntax and conventions for authoring content compatible with this package.
