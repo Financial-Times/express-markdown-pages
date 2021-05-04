@@ -32,7 +32,9 @@
   },
   "dependencies": {
     "debug": "^4.3.0",
+    "emoji-regex": "^9.2.2",
     "front-matter": "^4.0.2",
+    "gemoji": "^6.1.0",
     "glob": "^7.1.6",
     "html-entities": "^2.3.2",
     "is-object": "^1.0.2",
