@@ -12,4 +12,5 @@ test/
 .lintstagedrc.js
 .prettierignore
 .prettierrc.js
+jsdoc.json
 Makefile
