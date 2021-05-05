@@ -8,118 +8,137 @@ describe('integration test', () => {
 		app = await createTestApp();
 	});
 
-	it('returns data for the index page', () => {
-		return supertest(app)
-			.get('/')
-			.expect(200)
-			.then(response => {
-				expect(response.body.page).toEqual(
-					expect.objectContaining({
-						title: 'Documentation',
-						html: expect.any(String),
-						text: expect.any(String),
-					}),
-				);
-			});
-	});
-
-	it('returns navigation data for the index page', () => {
-		return supertest(app)
-			.get('/')
-			.expect(200)
-			.then(response => {
-				expect(response.body.navigation).toEqual(
-					expect.objectContaining({
-						current: expect.objectContaining({
+	describe('pages', () => {
+		it('responds with data for the index page', () => {
+			return supertest(app)
+				.get('/')
+				.expect(200)
+				.then(response => {
+					expect(response.body.page).toEqual(
+						expect.objectContaining({
 							title: 'Documentation',
+							html: expect.any(String),
+							text: expect.any(String),
 						}),
-						ancestors: [],
-						children: expect.arrayContaining([
-							expect.objectContaining({ slug: '/jsdoc' }),
-							expect.objectContaining({
-								slug: '/writing-content',
+					);
+				});
+		});
+
+		it('responds with navigation data for the index page', () => {
+			return supertest(app)
+				.get('/')
+				.expect(200)
+				.then(response => {
+					expect(response.body.navigation).toEqual(
+						expect.objectContaining({
+							current: expect.objectContaining({
+								title: 'Documentation',
 							}),
-						]),
-					}),
-				);
-			});
-	});
-
-	it('returns data for the JSDoc page', () => {
-		return supertest(app)
-			.get('/jsdoc')
-			.expect(200)
-			.then(response => {
-				expect(response.body.page).toEqual(
-					expect.objectContaining({
-						html: expect.any(String),
-						text: expect.any(String),
-					}),
-				);
-			});
-	});
-
-	it('returns navigation data for the JSDoc page', () => {
-		return supertest(app)
-			.get('/jsdoc')
-			.expect(200)
-			.then(response => {
-				expect(response.body.navigation).toEqual(
-					expect.objectContaining({
-						current: expect.objectContaining({
-							slug: '/jsdoc',
+							ancestors: [],
+							children: expect.arrayContaining([
+								expect.objectContaining({ slug: '/jsdoc' }),
+								expect.objectContaining({
+									slug: '/writing-content',
+								}),
+							]),
 						}),
-						ancestors: expect.arrayContaining([
-							expect.objectContaining({
-								slug: '/',
-							}),
-						]),
-						siblings: expect.arrayContaining([
-							expect.objectContaining({
-								slug: '/writing-content',
-							}),
-						]),
-					}),
-				);
-			});
-	});
+					);
+				});
+		});
 
-	it('returns data for the writing content page', () => {
-		return supertest(app)
-			.get('/writing-content')
-			.expect(200)
-			.then(response => {
-				expect(response.body.page).toEqual(
-					expect.objectContaining({
-						html: expect.any(String),
-						text: expect.any(String),
-					}),
-				);
-			});
-	});
-
-	it('returns navigation data for the writing content page', () => {
-		return supertest(app)
-			.get('/writing-content')
-			.expect(200)
-			.then(response => {
-				expect(response.body.navigation).toEqual(
-					expect.objectContaining({
-						current: expect.objectContaining({
-							slug: '/writing-content',
+		it('responds with data for the JSDoc page', () => {
+			return supertest(app)
+				.get('/jsdoc')
+				.expect(200)
+				.then(response => {
+					expect(response.body.page).toEqual(
+						expect.objectContaining({
+							html: expect.any(String),
+							text: expect.any(String),
 						}),
-						ancestors: expect.arrayContaining([
-							expect.objectContaining({
-								slug: '/',
-							}),
-						]),
-						siblings: expect.arrayContaining([
-							expect.objectContaining({
+					);
+				});
+		});
+
+		it('responds with navigation data for the JSDoc page', () => {
+			return supertest(app)
+				.get('/jsdoc')
+				.expect(200)
+				.then(response => {
+					expect(response.body.navigation).toEqual(
+						expect.objectContaining({
+							current: expect.objectContaining({
 								slug: '/jsdoc',
 							}),
-						]),
-					}),
-				);
-			});
+							ancestors: expect.arrayContaining([
+								expect.objectContaining({
+									slug: '/',
+								}),
+							]),
+							siblings: expect.arrayContaining([
+								expect.objectContaining({
+									slug: '/writing-content',
+								}),
+							]),
+						}),
+					);
+				});
+		});
+
+		it('responds with data for the Writing Content page', () => {
+			return supertest(app)
+				.get('/writing-content')
+				.expect(200)
+				.then(response => {
+					expect(response.body.page).toEqual(
+						expect.objectContaining({
+							html: expect.any(String),
+							text: expect.any(String),
+						}),
+					);
+				});
+		});
+
+		it('responds with navigation data for the Writing Content page', () => {
+			return supertest(app)
+				.get('/writing-content')
+				.expect(200)
+				.then(response => {
+					expect(response.body.navigation).toEqual(
+						expect.objectContaining({
+							current: expect.objectContaining({
+								slug: '/writing-content',
+							}),
+							ancestors: expect.arrayContaining([
+								expect.objectContaining({
+									slug: '/',
+								}),
+							]),
+							siblings: expect.arrayContaining([
+								expect.objectContaining({
+									slug: '/jsdoc',
+								}),
+							]),
+						}),
+					);
+				});
+		});
+
+		it('responds with a 404 for an unknown page', () => {
+			return supertest(app).get('/unknown').expect(404);
+		});
+	});
+
+	describe('images', () => {
+		it('responds with the request image file', () => {
+			return supertest(app)
+				.get('/images/github.png')
+				.expect(200)
+				.expect('Content-Type', /image\/png/);
+		});
+
+		it('responds with a 404 for an unknown image', () => {
+			return supertest(app).get('/images/unknown.png').expect(404);
+		});
 	});
 });
