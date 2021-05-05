@@ -100,22 +100,23 @@ const pages = db.getCollection('pages');
 **Kind**: global typedef  
 **Properties**
 
-| Name               | Type                              | Description                                                           |
-| ------------------ | --------------------------------- | --------------------------------------------------------------------- |
-| filePath           | <code>String</code>               | The full path to the file on disk                                     |
-| fileName           | <code>String</code>               | The file base name                                                    |
-| id                 | <code>String</code>               | A unique randomly generated ID for internal use                       |
-| index              | <code>Number</code>               | The sort index taken from the file name or parent folder name         |
-| slug               | <code>String</code>               | The generated URL path for the page                                   |
-| html               | <code>String</code>               | The transformed HTML content of the page                              |
-| text               | <code>String</code>               | The transformed text content of the page                              |
-| childIDs           | <code>Array.&lt;String&gt;</code> | The IDs of pages one level deeper in the navigation hierarchy         |
-| parentID           | <code>String</code>               | The ID of any parent page                                             |
-| [title]            | <code>String</code>               | Title for the page taken from page frontmatter                        |
-| [description]      | <code>String</code>               | Description for the page taken from page frontmatter                  |
-| [cloneContentFrom] | <code>String</code>               | A relative path to another page to clone content from                 |
-| [redirect]         | <code>String</code>               | A URL or relative path to redirect to instead of displaying the page  |
-| [draft]            | <code>Boolean</code>              | Pages set to draft status will be excluded from navigation properties |
+| Name               | Type                              | Description                                                                              |
+| ------------------ | --------------------------------- | ---------------------------------------------------------------------------------------- |
+| filePath           | <code>String</code>               | The full path to the file on disk                                                        |
+| fileName           | <code>String</code>               | The file base name                                                                       |
+| id                 | <code>String</code>               | A unique randomly generated ID for internal use                                          |
+| index              | <code>Number</code>               | The sort index taken from the file name or parent folder name                            |
+| slug               | <code>String</code>               | The generated URL path for the page                                                      |
+| html               | <code>String</code>               | The transformed HTML content of the page                                                 |
+| text               | <code>String</code>               | The transformed text content of the page                                                 |
+| childIDs           | <code>Array.&lt;String&gt;</code> | The IDs of pages one level deeper in the navigation hierarchy                            |
+| parentID           | <code>String</code>               | The ID of any parent page                                                                |
+| [title]            | <code>String</code>               | Title for the page taken from page frontmatter                                           |
+| [description]      | <code>String</code>               | Description for the page taken from page frontmatter                                     |
+| [cloneContentFrom] | <code>String</code>               | A relative path to another page to clone content from                                    |
+| [redirect]         | <code>String</code>               | A URL or relative path to redirect to instead of displaying the page                     |
+| [draft]            | <code>Boolean</code>              | Pages set to draft status will be excluded from navigation properties in production only |
+| [hidden]           | <code>Boolean</code>              | Pages set to hidden will always be excluded from navigation properties                   |
 
 <a name="Image"></a>
 

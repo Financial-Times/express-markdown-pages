@@ -38,7 +38,8 @@ Between these triple-dashed lines, you can set predefined variables:
 | `description`      | A short sentence describing the page's content which could be used as the document description and as a summary on index pages. Optional.                                                                        |
 | `redirect`         | A URL or [relative path](#linking-between-pages) to redirect to instead of displaying the page. Usually used for pages which have moved. Optional.                                                               |
 | `cloneContentFrom` | A [relative path](#linking-between-pages) to another page to clone content from. This is useful for creating placeholders so that pages may appear in multiple places without duplicating the content. Optional. |
-| `draft`            | A boolean that allows contributors to share work in progress pages without being discoverable via navigation on the production site. Optional.                                                                   |
+| `draft`            | A boolean which when true excludes the page from navigation on the production site. Optional.                                                                                                                    |
+| `hidden`           | A boolean which when true always excludes pages from navigation. Optional.                                                                                                                                       |
 
 _Please note_ that the YAML implementation used supports [types] so ambiguous values or more complex types such as dates or regular expressions can be parsed correctly.
 
