@@ -62,5 +62,15 @@
     "index": 3,
     "parentID": "001",
     "childIDs": []
+  },
+  {
+    "title": "Products",
+    "id": "009",
+    "hidden": true,
+    "slug": "/products",
+    "index": 100,
+    "redirect": "/services",
+    "parentID": "001",
+    "childIDs": []
   }
 ]
