@@ -68,7 +68,7 @@
     "id": "009",
     "hidden": true,
     "slug": "/products",
-    "index": 100,
+    "index": null,
     "redirect": "/services",
     "parentID": "001",
     "childIDs": []
