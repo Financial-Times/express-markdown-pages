@@ -3,14 +3,14 @@
     "title": "Home",
     "id": "001",
     "slug": "/home",
-    "index": null,
+    "order": null,
     "childIDs": []
   },
   {
     "title": "About Us",
     "id": "002",
     "slug": "/about-us",
-    "index": 2,
+    "order": 2,
     "parentID": "001",
     "childIDs": ["003"]
   },
@@ -18,7 +18,7 @@
     "title": "Our People",
     "id": "003",
     "slug": "/about-us/our-people",
-    "index": null,
+    "order": null,
     "parentID": "002",
     "childIDs": ["004", "005", "006"]
   },
@@ -26,7 +26,7 @@
     "title": "Paige Pollard",
     "id": "004",
     "slug": "/about-us/our-people/paige-pollard",
-    "index": null,
+    "order": null,
     "parentID": "003",
     "childIDs": []
   },
@@ -34,7 +34,7 @@
     "title": "Sneha Howell",
     "id": "005",
     "slug": "/about-us/our-people/sneha-howell",
-    "index": null,
+    "order": null,
     "parentID": "003",
     "childIDs": []
   },
@@ -42,7 +42,7 @@
     "title": "Romeo Schmitt",
     "id": "006",
     "slug": "/about-us/our-people/romeo-schmitt",
-    "index": null,
+    "order": null,
     "parentID": "003",
     "childIDs": [],
     "draft": true
@@ -51,7 +51,7 @@
     "title": "Services",
     "id": "007",
     "slug": "/services",
-    "index": 1,
+    "order": 1,
     "parentID": "001",
     "childIDs": []
   },
@@ -59,7 +59,7 @@
     "title": "Contact Us",
     "id": "008",
     "slug": "/contact-us",
-    "index": 3,
+    "order": 3,
     "parentID": "001",
     "childIDs": []
   },
@@ -68,7 +68,7 @@
     "id": "009",
     "hidden": true,
     "slug": "/products",
-    "index": null,
+    "order": null,
     "redirect": "/services",
     "parentID": "001",
     "childIDs": []

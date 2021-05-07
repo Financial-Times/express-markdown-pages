@@ -72,7 +72,7 @@ app.get('/docs/*', markdownPages.middleware, (req, res) => {});
 
 Creates the Loki database for your app's pages and images.
 
-**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)  
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
 **Example**
 
 ```js
@@ -84,7 +84,7 @@ const pages = db.getCollection('pages');
 
 ## Options
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name         | Type                              | Default                          | Description                                                                                 |
@@ -97,7 +97,7 @@ const pages = db.getCollection('pages');
 
 ## Page
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name               | Type                              | Description                                                                              |
@@ -105,7 +105,7 @@ const pages = db.getCollection('pages');
 | filePath           | <code>String</code>               | The full path to the file on disk                                                        |
 | fileName           | <code>String</code>               | The file base name                                                                       |
 | id                 | <code>String</code>               | A unique randomly generated ID for internal use                                          |
-| index              | <code>Number</code>               | The sort index taken from the file name or parent folder name                            |
+| order              | <code>Number</code>               | The sort order taken from the file name or parent folder name. Defaults to infinity.     |
 | slug               | <code>String</code>               | The generated URL path for the page                                                      |
 | html               | <code>String</code>               | The transformed HTML content of the page                                                 |
 | text               | <code>String</code>               | The transformed text content of the page                                                 |
@@ -122,7 +122,7 @@ const pages = db.getCollection('pages');
 
 ## Image
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name     | Type                | Description                                     |
@@ -136,7 +136,7 @@ const pages = db.getCollection('pages');
 
 ## Navigation
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name      | Type                                     | Description                                                                                            |
@@ -150,7 +150,7 @@ const pages = db.getCollection('pages');
 
 ## TaxonomyOption
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name     | Type                 |
@@ -163,7 +163,7 @@ const pages = db.getCollection('pages');
 
 ## Taxonomy
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name    | Type                                                         |
@@ -176,7 +176,7 @@ const pages = db.getCollection('pages');
 
 ## PageData
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name       | Type                                                                  | Description                                                                            |
