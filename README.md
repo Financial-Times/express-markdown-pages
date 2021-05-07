@@ -19,7 +19,7 @@ app.get('/*', markdownPages.middleware, (request, response) => {
 
 ## Installation
 
-This is package for [Node.js] and is available through the [npm] registry. Node 12 or higher is required.
+This is package for [Node.js] and is available through the [npm] registry. Node 14 or higher is required.
 
 Installation is done using the [npm install] command:
 
@@ -96,7 +96,7 @@ Now you're up and running you can get on with using [the data](#page-data) in yo
 
 ### Options
 
-See the [JSDoc type definitions](docs/jsdoc.md#Options) for more information about configuration options.
+See the [JSDoc type definitions](docs/jsdoc.md#libmarkdownpagesoptions) for more information about configuration options.
 
 ### Debugging
 
