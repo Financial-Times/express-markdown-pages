@@ -110,10 +110,16 @@ DEBUG=express:markdownPages node app.js
 
 ### Page data
 
-The middleware provided by this package will append a `markdownPages` property to the [`response.locals` object](https://expressjs.com/en/4x/api.html#res.locals) when a page matching the request is found. This object includes the content for the requested page and navigation hierarchy, and for index pages it will also include any taxonomies for child pages, and child pages which match any selected filters.
+The middleware provided by this package will append a `markdownPages` property to the [`response.locals` object](https://expressjs.com/en/4x/api.html#res.locals) when a page matching the request is found. This object includes the content for the requested page and navigation hierarchy, and for [index pages](docs/writing-content.md#index-pages) it will also include any information about taxonomies and tags used by child pages.
 
 See the [JSDoc type definitions](docs/jsdoc.md#PageData) for more information about page data.
 
 ### Writing content
 
 See the [writing content guide](docs/writing-content.md) for more information about the syntax and conventions for authoring content compatible with this package.
+
+## Screenshots
+
+| In VSCode                                          | On GitHub                                          | Rendered on a website                                        |
+| -------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| ![A page viewed in VSCode](docs/images/vscode.png) | ![A page viewed on GitHub](docs/images/github.png) | ![A page viewed in the web browser](docs/images/website.png) |

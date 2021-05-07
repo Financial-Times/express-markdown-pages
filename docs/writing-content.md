@@ -35,7 +35,7 @@ Between these triple-dashed lines, you can set predefined variables:
 | Variable           | Description                                                                                                                                                                                                      |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `title`            | The title of the page. This could be used as the document title, navigation links, and as the main heading of the page. **Required**.                                                                            |
-| `description`      | A short sentence describing the page's content which could be used as the document description and as a summary on index pages. Optional.                                                                        |
+| `description`      | A short sentence describing the page's content which could be used as the document description and as a summary on [index pages](#index-pages). Optional.                                                        |
 | `redirect`         | A URL or [relative path](#linking-between-pages) to redirect to instead of displaying the page. Usually used for pages which have moved. Optional.                                                               |
 | `cloneContentFrom` | A [relative path](#linking-between-pages) to another page to clone content from. This is useful for creating placeholders so that pages may appear in multiple places without duplicating the content. Optional. |
 | `draft`            | A boolean which when true excludes the page from navigation on the production site. Optional.                                                                                                                    |
@@ -48,11 +48,21 @@ _Please note_ that the YAML implementation used supports [types] so ambiguous va
 
 ### File and folder names
 
-Pages are organised into a folder hierarchy. Each folder is intended to group together pages which cover a related theme. As a minimum each folder _must_ contain an `index.md` file.
+Pages are organised into a folder hierarchy. Each folder is intended to group together pages which cover a related theme. As a minimum each folder _must_ contain an `index.md` file - if you do not create an [index pages](#index-pages) in every folder then the navigation hierarchy will not be fully populated.
 
-File and folder names can be written in upper or lower case and may contain spaces and special characters. These will all be translated into a simplified friendly URL.
+File and folder names can be written in upper or lower case and may contain spaces and special characters. These will all be translated into simplified friendly URLs.
 
 By default all pages are sorted and displayed in alphanumerical order but this can be overridden by prefixing names with a number followed by a period, for example `1. ZZ Top.md` and `2. Abba`. This forces the page to be sorted numerically. This number prefix will always be excluded from the page's URL.
+
+### Index pages
+
+Many web servers, such as Apache or IIS, will look for a file named `index` when a local directory is requested and if this file is not found then they can automatically generate a list of links to the files within.
+
+This package broadly follows this convention, files named `index.md` or `Index.md` are accessed using the folder name alone. For example, a file stored in your project as `docs/Index.md` will be assigned the path `/docs`.
+
+Subsequently all other pages within the same directory will be considered children of the index page, allowing you to easily list and link to them.
+
+In addition, index pages also have extra [page data](jsdoc.md#pagedata) properties which summarise any [tags and taxonomies](#tagging) used by the other pages in the directory. This taxonomy data can even be used to dynamically filter the pages by tag/s.
 
 ### Tagging
 
@@ -69,9 +79,9 @@ tags:
 tags: [tag one, tag two, tag three]
 ```
 
-Taxonomies can be configured with [options](jsdoc.md#Options).
+The Frontmatter properties to interpret as taxonomies can be configured with [options](jsdoc.md#Options) when initialising this package.
 
-_Please note_ that tags are case-sensitive.
+_Please note_ that tags are case-sensitive so `Dogs` and `dogs` will not be considered equal.
 
 ### Linking between pages
 
@@ -87,7 +97,7 @@ _Please note_ that Markdown will not recognise [link destinations](https://spec.
 
 ### Embedding images
 
-Images should work whether browsing content on GitHub, editing content locally, and when viewing content rendered on a website. Images can be uploaded to a third party service and referenced by URL or kept alongside the Markdown content and referenced locally.
+Just like links, images should work whether browsing content on GitHub, editing content locally, and when viewing content rendered on a website. Images can be uploaded to a third party service and referenced by URL or kept alongside your Markdown content and referenced locally.
 
 ```markdown
 Images can be uploaded to a third party and referenced by absolute URL:
