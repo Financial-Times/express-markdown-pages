@@ -1,15 +1,13 @@
-## Classes
+## Modules
 
 <dl>
-<dt><a href="#MarkdownPages">MarkdownPages</a></dt>
+<dt><a href="#module_lib/MarkdownPages">lib/MarkdownPages</a></dt>
 <dd></dd>
 </dl>
 
 ## Typedefs
 
 <dl>
-<dt><a href="#Options">Options</a></dt>
-<dd></dd>
 <dt><a href="#Page">Page</a></dt>
 <dd></dd>
 <dt><a href="#Image">Image</a></dt>
@@ -24,35 +22,52 @@
 <dd></dd>
 </dl>
 
-<a name="MarkdownPages"></a>
+<a name="module_lib/MarkdownPages"></a>
 
-## MarkdownPages
+## lib/MarkdownPages
 
-**Kind**: global class
+-   [lib/MarkdownPages](#module_lib/MarkdownPages)
+    -   [~MarkdownPages](#module_lib/MarkdownPages..MarkdownPages)
+        -   [new MarkdownPages(userOptions)](#new_module_lib/MarkdownPages..MarkdownPages_new)
+        -   [.middleware(request, response, next)](#module_lib/MarkdownPages..MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
+        -   [.init()](#module_lib/MarkdownPages..MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
+    -   [~Options](#module_lib/MarkdownPages..Options)
 
--   [MarkdownPages](#MarkdownPages)
-    -   [new MarkdownPages(userOptions)](#new_MarkdownPages_new)
-    -   [.middleware(request, response, next)](#MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
-    -   [.init()](#MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
+<a name="module_lib/MarkdownPages..MarkdownPages"></a>
 
-<a name="new_MarkdownPages_new"></a>
+### lib/MarkdownPages~MarkdownPages
 
-### new MarkdownPages(userOptions)
+**Kind**: inner class of [<code>lib/MarkdownPages</code>](#module_lib/MarkdownPages)
 
-Create an instance of Static Content Stack
+-   [~MarkdownPages](#module_lib/MarkdownPages..MarkdownPages)
+    -   [new MarkdownPages(userOptions)](#new_module_lib/MarkdownPages..MarkdownPages_new)
+    -   [.middleware(request, response, next)](#module_lib/MarkdownPages..MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
+    -   [.init()](#module_lib/MarkdownPages..MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
 
-| Param       | Type                             | Description    |
-| ----------- | -------------------------------- | -------------- |
-| userOptions | [<code>Options</code>](#Options) | Client options |
+<a name="new_module_lib/MarkdownPages..MarkdownPages_new"></a>
 
-<a name="MarkdownPages+middleware"></a>
+#### new MarkdownPages(userOptions)
 
-### markdownPages.middleware(request, response, next) ⇒ <code>Promise.&lt;void&gt;</code>
+Create a new instance of the Markdown pages
 
-An Express compatible route handler which can append page data to
-response.locals or serve image files.
+| Param       | Type                 | Description    |
+| ----------- | -------------------- | -------------- |
+| userOptions | <code>Options</code> | Client options |
 
-**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
+**Example**
+
+```js
+const markdownPages = new MarkDownPages({ source: './docs' });
+```
+
+<a name="module_lib/MarkdownPages..MarkdownPages+middleware"></a>
+
+#### markdownPages.middleware(request, response, next) ⇒ <code>Promise.&lt;void&gt;</code>
+
+An Express compatible route handler which appenda page data to
+response.locals or serves image files.
+
+**Kind**: instance method of [<code>MarkdownPages</code>](#module_lib/MarkdownPages..MarkdownPages)
 
 | Param    | Type                                     |
 | -------- | ---------------------------------------- |
@@ -66,25 +81,27 @@ response.locals or serve image files.
 app.get('/docs/*', markdownPages.middleware, (req, res) => {});
 ```
 
-<a name="MarkdownPages+init"></a>
+<a name="module_lib/MarkdownPages..MarkdownPages+init"></a>
 
-### markdownPages.init() ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
+#### markdownPages.init() ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
 
-Creates the Loki database for your app's pages and images.
+Initialises the database for your app's pages and images. This is not
+required but enables you to store a reference to the database for use in your app.
 
-**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
+**Kind**: instance method of [<code>MarkdownPages</code>](#module_lib/MarkdownPages..MarkdownPages)  
 **Example**
 
 ```js
 const db = await markdownPages.init();
 const pages = db.getCollection('pages');
+const homePage = db.by('slug', '/');
 ```
 
-<a name="Options"></a>
+<a name="module_lib/MarkdownPages..Options"></a>
 
-## Options
+### lib/MarkdownPages~Options
 
-**Kind**: global typedef
+**Kind**: inner typedef of [<code>lib/MarkdownPages</code>](#module_lib/MarkdownPages)  
 **Properties**
 
 | Name         | Type                              | Default                          | Description                                                                                 |
@@ -97,7 +114,7 @@ const pages = db.getCollection('pages');
 
 ## Page
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name               | Type                              | Description                                                                              |
@@ -105,7 +122,7 @@ const pages = db.getCollection('pages');
 | filePath           | <code>String</code>               | The full path to the file on disk                                                        |
 | fileName           | <code>String</code>               | The file base name                                                                       |
 | id                 | <code>String</code>               | A unique randomly generated ID for internal use                                          |
-| order              | <code>Number</code>               | The sort order taken from the file name or parent folder name. Defaults to infinity.     |
+| order              | <code>Number</code>               | The sort order taken from the file name or parent folder name                            |
 | slug               | <code>String</code>               | The generated URL path for the page                                                      |
 | html               | <code>String</code>               | The transformed HTML content of the page                                                 |
 | text               | <code>String</code>               | The transformed text content of the page                                                 |
@@ -122,7 +139,7 @@ const pages = db.getCollection('pages');
 
 ## Image
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name     | Type                | Description                                     |
@@ -136,7 +153,7 @@ const pages = db.getCollection('pages');
 
 ## Navigation
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name      | Type                                     | Description                                                                                            |
@@ -150,7 +167,7 @@ const pages = db.getCollection('pages');
 
 ## TaxonomyOption
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name     | Type                 |
@@ -163,7 +180,7 @@ const pages = db.getCollection('pages');
 
 ## Taxonomy
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name    | Type                                                         |
@@ -176,7 +193,7 @@ const pages = db.getCollection('pages');
 
 ## PageData
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name       | Type                                                                  | Description                                                                            |

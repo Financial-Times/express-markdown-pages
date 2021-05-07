@@ -1,6 +1,6 @@
 {
   "name": "@financial-times/express-markdown-pages",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "An Express middleware that transforms plain text files into dynamic pages and fits right into your existing app.",
   "main": "lib/index.js",
   "scripts": {
