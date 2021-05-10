@@ -1,13 +1,15 @@
-## Modules
+## Classes
 
 <dl>
-<dt><a href="#module_lib/MarkdownPages">lib/MarkdownPages</a></dt>
+<dt><a href="#MarkdownPages">MarkdownPages</a></dt>
 <dd></dd>
 </dl>
 
 ## Typedefs
 
 <dl>
+<dt><a href="#Options">Options</a></dt>
+<dd></dd>
 <dt><a href="#Page">Page</a></dt>
 <dd></dd>
 <dt><a href="#Image">Image</a></dt>
@@ -22,37 +24,28 @@
 <dd></dd>
 </dl>
 
-<a name="module_lib/MarkdownPages"></a>
+<a name="MarkdownPages"></a>
 
-## lib/MarkdownPages
+## MarkdownPages
 
--   [lib/MarkdownPages](#module_lib/MarkdownPages)
-    -   [~MarkdownPages](#module_lib/MarkdownPages..MarkdownPages)
-        -   [new MarkdownPages(userOptions)](#new_module_lib/MarkdownPages..MarkdownPages_new)
-        -   [.middleware(request, response, next)](#module_lib/MarkdownPages..MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
-        -   [.init()](#module_lib/MarkdownPages..MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
-    -   [~Options](#module_lib/MarkdownPages..Options)
+**Kind**: global class
 
-<a name="module_lib/MarkdownPages..MarkdownPages"></a>
+-   [MarkdownPages](#MarkdownPages)
+    -   [new MarkdownPages(userOptions)](#new_MarkdownPages_new)
+    -   [.init()](#MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
+    -   [.middleware(request, response, next)](#MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
+    -   [.getPageData(slug, [queryParams])](#MarkdownPages+getPageData) ⇒ <code>Promise.&lt;(PageData\|null)&gt;</code>
+    -   [.getImage(slug)](#MarkdownPages+getImage) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
 
-### lib/MarkdownPages~MarkdownPages
+<a name="new_MarkdownPages_new"></a>
 
-**Kind**: inner class of [<code>lib/MarkdownPages</code>](#module_lib/MarkdownPages)
-
--   [~MarkdownPages](#module_lib/MarkdownPages..MarkdownPages)
-    -   [new MarkdownPages(userOptions)](#new_module_lib/MarkdownPages..MarkdownPages_new)
-    -   [.middleware(request, response, next)](#module_lib/MarkdownPages..MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
-    -   [.init()](#module_lib/MarkdownPages..MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
-
-<a name="new_module_lib/MarkdownPages..MarkdownPages_new"></a>
-
-#### new MarkdownPages(userOptions)
+### new MarkdownPages(userOptions)
 
 Create a new instance of the Markdown pages
 
-| Param       | Type                 | Description    |
-| ----------- | -------------------- | -------------- |
-| userOptions | <code>Options</code> | Client options |
+| Param       | Type                             | Description    |
+| ----------- | -------------------------------- | -------------- |
+| userOptions | [<code>Options</code>](#Options) | Client options |
 
 **Example**
 
@@ -60,14 +53,30 @@ Create a new instance of the Markdown pages
 const markdownPages = new MarkDownPages({ source: './docs' });
 ```
 
-<a name="module_lib/MarkdownPages..MarkdownPages+middleware"></a>
+<a name="MarkdownPages+init"></a>
 
-#### markdownPages.middleware(request, response, next) ⇒ <code>Promise.&lt;void&gt;</code>
+### markdownPages.init() ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
+
+Initialises the database for your app's pages and images. This is not
+required but enables you to store a reference to the database for use in your app.
+
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
+**Example**
+
+```js
+const db = await markdownPages.init();
+const pages = db.getCollection('pages');
+const homePage = db.by('slug', '/');
+```
+
+<a name="MarkdownPages+middleware"></a>
+
+### markdownPages.middleware(request, response, next) ⇒ <code>Promise.&lt;void&gt;</code>
 
 An Express compatible route handler which appenda page data to
 response.locals or serves image files.
 
-**Kind**: instance method of [<code>MarkdownPages</code>](#module_lib/MarkdownPages..MarkdownPages)
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
 
 | Param    | Type                                     |
 | -------- | ---------------------------------------- |
@@ -81,27 +90,49 @@ response.locals or serves image files.
 app.get('/docs/*', markdownPages.middleware, (req, res) => {});
 ```
 
-<a name="module_lib/MarkdownPages..MarkdownPages+init"></a>
+<a name="MarkdownPages+getPageData"></a>
 
-#### markdownPages.init() ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
+### markdownPages.getPageData(slug, [queryParams]) ⇒ <code>Promise.&lt;(PageData\|null)&gt;</code>
 
-Initialises the database for your app's pages and images. This is not
-required but enables you to store a reference to the database for use in your app.
+Fetches all page data for the given slug, including navigation
+and taxonomies/results for index pages.
 
-**Kind**: instance method of [<code>MarkdownPages</code>](#module_lib/MarkdownPages..MarkdownPages)  
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
+
+| Param         | Type                            | Default         |
+| ------------- | ------------------------------- | --------------- |
+| slug          | <code>String</code>             |                 |
+| [queryParams] | <code>module:qs~ParsedQs</code> | <code>{}</code> |
+
 **Example**
 
 ```js
-const db = await markdownPages.init();
-const pages = db.getCollection('pages');
-const homePage = db.by('slug', '/');
+const aboutPage = markdownPages.getPageData('/about');
 ```
 
-<a name="module_lib/MarkdownPages..Options"></a>
+<a name="MarkdownPages+getImage"></a>
 
-### lib/MarkdownPages~Options
+### markdownPages.getImage(slug) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
 
-**Kind**: inner typedef of [<code>lib/MarkdownPages</code>](#module_lib/MarkdownPages)  
+Fetches metadata for an image with the given slug.
+
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
+
+| Param | Type                |
+| ----- | ------------------- |
+| slug  | <code>String</code> |
+
+**Example**
+
+```js
+const dogImage = markdownPages.getImage('/images/dog.jpg');
+```
+
+<a name="Options"></a>
+
+## Options
+
+**Kind**: global typedef
 **Properties**
 
 | Name         | Type                              | Default                          | Description                                                                                 |
@@ -114,7 +145,7 @@ const homePage = db.by('slug', '/');
 
 ## Page
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name               | Type                              | Description                                                                              |
@@ -139,7 +170,7 @@ const homePage = db.by('slug', '/');
 
 ## Image
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name     | Type                | Description                                     |
@@ -153,7 +184,7 @@ const homePage = db.by('slug', '/');
 
 ## Navigation
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name      | Type                                     | Description                                                                                            |
@@ -167,7 +198,7 @@ const homePage = db.by('slug', '/');
 
 ## TaxonomyOption
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name     | Type                 |
@@ -180,7 +211,7 @@ const homePage = db.by('slug', '/');
 
 ## Taxonomy
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name    | Type                                                         |
@@ -193,7 +224,7 @@ const homePage = db.by('slug', '/');
 
 ## PageData
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name       | Type                                                                  | Description                                                                            |
