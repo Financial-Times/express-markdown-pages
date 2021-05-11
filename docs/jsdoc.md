@@ -1,28 +1,22 @@
 ## Classes
 
-<dl>
-<dt><a href="#MarkdownPages">MarkdownPages</a></dt>
-<dd></dd>
-</dl>
+-   [MarkdownPages](#MarkdownPages)
+    -   [new MarkdownPages(userOptions)](#new_MarkdownPages_new)
+    -   [.init()](#MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
+    -   [.middleware(request, response, next)](#MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
+    -   [.getPage(slug)](#MarkdownPages+getPage) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
+    -   [.getImage(slug)](#MarkdownPages+getImage) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
+    -   [.getPageData(page, [queryParams])](#MarkdownPages+getPageData) ⇒ [<code>Promise.&lt;PageData&gt;</code>](#PageData)
 
 ## Typedefs
 
-<dl>
-<dt><a href="#Options">Options</a></dt>
-<dd></dd>
-<dt><a href="#Page">Page</a></dt>
-<dd></dd>
-<dt><a href="#Image">Image</a></dt>
-<dd></dd>
-<dt><a href="#Navigation">Navigation</a></dt>
-<dd></dd>
-<dt><a href="#TaxonomyOption">TaxonomyOption</a></dt>
-<dd></dd>
-<dt><a href="#Taxonomy">Taxonomy</a></dt>
-<dd></dd>
-<dt><a href="#PageData">PageData</a></dt>
-<dd></dd>
-</dl>
+-   [Options](#Options)
+-   [Page](#Page)
+-   [Image](#Image)
+-   [Navigation](#Navigation)
+-   [TaxonomyOption](#TaxonomyOption)
+-   [Taxonomy](#Taxonomy)
+-   [PageData](#PageData)
 
 <a name="MarkdownPages"></a>
 
