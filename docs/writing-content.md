@@ -27,7 +27,6 @@ title: Writing docs like a hacker
 description: Guide on how to contribute documentation
 tags: [security, documentation]
 ---
-
 ```
 
 Between these triple-dashed lines, you can set predefined variables:
