@@ -34,8 +34,9 @@
     -   [new MarkdownPages(userOptions)](#new_MarkdownPages_new)
     -   [.init()](#MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
     -   [.middleware(request, response, next)](#MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
-    -   [.getPageData(slug, [queryParams])](#MarkdownPages+getPageData) ⇒ <code>Promise.&lt;(PageData\|null)&gt;</code>
+    -   [.getPage(slug)](#MarkdownPages+getPage) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
     -   [.getImage(slug)](#MarkdownPages+getImage) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
+    -   [.getPageData(page, [queryParams])](#MarkdownPages+getPageData) ⇒ [<code>Promise.&lt;PageData&gt;</code>](#PageData)
 
 <a name="new_MarkdownPages_new"></a>
 
@@ -60,7 +61,7 @@ const markdownPages = new MarkDownPages({ source: './docs' });
 Initialises the database for your app's pages and images. This is not
 required but enables you to store a reference to the database for use in your app.
 
-**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)  
 **Example**
 
 ```js
@@ -73,7 +74,7 @@ const homePage = db.by('slug', '/');
 
 ### markdownPages.middleware(request, response, next) ⇒ <code>Promise.&lt;void&gt;</code>
 
-An Express compatible route handler which appenda page data to
+An Express compatible route handler which appends page data to
 response.locals or serves image files.
 
 **Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
@@ -90,24 +91,22 @@ response.locals or serves image files.
 app.get('/docs/*', markdownPages.middleware, (req, res) => {});
 ```
 
-<a name="MarkdownPages+getPageData"></a>
+<a name="MarkdownPages+getPage"></a>
 
-### markdownPages.getPageData(slug, [queryParams]) ⇒ <code>Promise.&lt;(PageData\|null)&gt;</code>
+### markdownPages.getPage(slug) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
 
-Fetches all page data for the given slug, including navigation
-and taxonomies/results for index pages.
+Fetches the content for the page with the given slug.
 
 **Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
 
-| Param         | Type                            | Default         |
-| ------------- | ------------------------------- | --------------- |
-| slug          | <code>String</code>             |                 |
-| [queryParams] | <code>module:qs~ParsedQs</code> | <code>{}</code> |
+| Param | Type                |
+| ----- | ------------------- |
+| slug  | <code>String</code> |
 
 **Example**
 
 ```js
-const aboutPage = markdownPages.getPageData('/about');
+const aboutPage = markdownPages.getPage('/about-us');
 ```
 
 <a name="MarkdownPages+getImage"></a>
@@ -128,11 +127,32 @@ Fetches metadata for an image with the given slug.
 const dogImage = markdownPages.getImage('/images/dog.jpg');
 ```
 
+<a name="MarkdownPages+getPageData"></a>
+
+### markdownPages.getPageData(page, [queryParams]) ⇒ [<code>Promise.&lt;PageData&gt;</code>](#PageData)
+
+Fetches all data for the given page, including navigation
+and taxonomies/results for index pages.
+
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
+
+| Param         | Type                            | Default         |
+| ------------- | ------------------------------- | --------------- |
+| page          | [<code>Page</code>](#Page)      |                 |
+| [queryParams] | <code>module:qs~ParsedQs</code> | <code>{}</code> |
+
+**Example**
+
+```js
+const aboutPage = markdownPages.getPage('/about-us');
+const pageData = markdownPages.getDataForPage(aboutPage);
+```
+
 <a name="Options"></a>
 
 ## Options
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name         | Type                              | Default                          | Description                                                                                 |
@@ -145,7 +165,7 @@ const dogImage = markdownPages.getImage('/images/dog.jpg');
 
 ## Page
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name               | Type                              | Description                                                                              |
@@ -170,7 +190,7 @@ const dogImage = markdownPages.getImage('/images/dog.jpg');
 
 ## Image
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name     | Type                | Description                                     |
@@ -184,7 +204,7 @@ const dogImage = markdownPages.getImage('/images/dog.jpg');
 
 ## Navigation
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name      | Type                                     | Description                                                                                            |
@@ -198,7 +218,7 @@ const dogImage = markdownPages.getImage('/images/dog.jpg');
 
 ## TaxonomyOption
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name     | Type                 |
@@ -211,7 +231,7 @@ const dogImage = markdownPages.getImage('/images/dog.jpg');
 
 ## Taxonomy
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name    | Type                                                         |
@@ -224,7 +244,7 @@ const dogImage = markdownPages.getImage('/images/dog.jpg');
 
 ## PageData
 
-**Kind**: global typedef
+**Kind**: global typedef  
 **Properties**
 
 | Name       | Type                                                                  | Description                                                                            |
