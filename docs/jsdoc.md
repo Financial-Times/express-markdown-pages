@@ -155,11 +155,12 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 **Kind**: global typedef  
 **Properties**
 
-| Name         | Type                              | Default                          | Description                                                                                 |
-| ------------ | --------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------- |
-| [source]     | <code>String</code>               | <code>&quot;./pages&quot;</code> | The directory containing your markdown and image content files                              |
-| [pathPrefix] | <code>String</code>               | <code>&quot;/&quot;</code>       | Prepends generated URL paths with this prefix (this should match the route mounted)         |
-| [taxonomies] | <code>Array.&lt;String&gt;</code> | <code>[&quot;tags&quot;]</code>  | Frontmatter properties to use as a list of tags used to create logical groupings of content |
+| Name             | Type                              | Default                          | Description                                                                                  |
+| ---------------- | --------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
+| [source]         | <code>String</code>               | <code>&quot;./pages&quot;</code> | The directory containing your markdown and image content files                               |
+| [pathPrefix]     | <code>String</code>               | <code>&quot;/&quot;</code>       | Prepends generated URL paths with this prefix (this should match the route mounted)          |
+| [taxonomies]     | <code>Array.&lt;String&gt;</code> | <code>[&quot;tags&quot;]</code>  | Frontmatter properties to use as a list of tags used to create logical groupings of content  |
+| [hideDraftPages] | <code>Boolean</code>              | <code>true</code>                | Exclude draft pages from navigation, defaults to true in production and false in development |
 
 <a name="Page"></a>
 

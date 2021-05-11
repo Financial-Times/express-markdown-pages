@@ -90,13 +90,13 @@ try {
 }
 ```
 
-Now you're up and running you can get on with using [the data](#page-data) in your templates or carry on to the [JSDoc documentation](docs/jsdoc.md) for more examples.
+Now you're up and running you can get on with using [the data](#page-data) in your templates or carry on to the [JSDoc documentation](docs/jsdoc.md#MarkdownPages) for more examples.
 
 [route handler]: https://expressjs.com/en/guide/routing.html#route-handlers
 
 ### Options
 
-See the [JSDoc type definitions](docs/jsdoc.md#libmarkdownpagesoptions) for more information about configuration options.
+See the [JSDoc type definitions](docs/jsdoc.md#Options) for more information about configuration options.
 
 ### Debugging
 
