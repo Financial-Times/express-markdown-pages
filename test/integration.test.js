@@ -36,9 +36,9 @@ describe('integration test', () => {
 							}),
 							ancestors: [],
 							children: expect.arrayContaining([
-								expect.objectContaining({ slug: '/jsdoc' }),
+								expect.objectContaining({ url: '/jsdoc' }),
 								expect.objectContaining({
-									slug: '/writing-content',
+									url: '/writing-content',
 								}),
 							]),
 						}),
@@ -68,16 +68,16 @@ describe('integration test', () => {
 					expect(response.body.navigation).toEqual(
 						expect.objectContaining({
 							current: expect.objectContaining({
-								slug: '/jsdoc',
+								url: '/jsdoc',
 							}),
 							ancestors: expect.arrayContaining([
 								expect.objectContaining({
-									slug: '/',
+									url: '/',
 								}),
 							]),
 							siblings: expect.arrayContaining([
 								expect.objectContaining({
-									slug: '/writing-content',
+									url: '/writing-content',
 								}),
 							]),
 						}),
@@ -107,16 +107,16 @@ describe('integration test', () => {
 					expect(response.body.navigation).toEqual(
 						expect.objectContaining({
 							current: expect.objectContaining({
-								slug: '/writing-content',
+								url: '/writing-content',
 							}),
 							ancestors: expect.arrayContaining([
 								expect.objectContaining({
-									slug: '/',
+									url: '/',
 								}),
 							]),
 							siblings: expect.arrayContaining([
 								expect.objectContaining({
-									slug: '/jsdoc',
+									url: '/jsdoc',
 								}),
 							]),
 						}),

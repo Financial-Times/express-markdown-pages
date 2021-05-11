@@ -4,8 +4,8 @@
     -   [new MarkdownPages(userOptions)](#new_MarkdownPages_new)
     -   [.init()](#MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
     -   [.middleware(request, response, next)](#MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
-    -   [.getPage(slug)](#MarkdownPages+getPage) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
-    -   [.getImage(slug)](#MarkdownPages+getImage) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
+    -   [.getPage(url)](#MarkdownPages+getPage) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
+    -   [.getImage(url)](#MarkdownPages+getImage) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
     -   [.getPageData(page, [queryParams])](#MarkdownPages+getPageData) ⇒ [<code>Promise.&lt;PageData&gt;</code>](#PageData)
 
 ## Typedefs
@@ -28,8 +28,8 @@
     -   [new MarkdownPages(userOptions)](#new_MarkdownPages_new)
     -   [.init()](#MarkdownPages+init) ⇒ <code>Promise.&lt;module:lokijs&gt;</code>
     -   [.middleware(request, response, next)](#MarkdownPages+middleware) ⇒ <code>Promise.&lt;void&gt;</code>
-    -   [.getPage(slug)](#MarkdownPages+getPage) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
-    -   [.getImage(slug)](#MarkdownPages+getImage) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
+    -   [.getPage(url)](#MarkdownPages+getPage) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
+    -   [.getImage(url)](#MarkdownPages+getImage) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
     -   [.getPageData(page, [queryParams])](#MarkdownPages+getPageData) ⇒ [<code>Promise.&lt;PageData&gt;</code>](#PageData)
 
 <a name="new_MarkdownPages_new"></a>
@@ -55,13 +55,13 @@ const markdownPages = new MarkDownPages({ source: './docs' });
 Initialises the database for your app's pages and images. This is not
 required but enables you to store a reference to the database for use in your app.
 
-**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)  
+**Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
 **Example**
 
 ```js
 const db = await markdownPages.init();
 const pages = db.getCollection('pages');
-const homePage = db.by('slug', '/');
+const homePage = db.by('url', '/');
 ```
 
 <a name="MarkdownPages+middleware"></a>
@@ -87,15 +87,15 @@ app.get('/docs/*', markdownPages.middleware, (req, res) => {});
 
 <a name="MarkdownPages+getPage"></a>
 
-### markdownPages.getPage(slug) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
+### markdownPages.getPage(url) ⇒ <code>Promise.&lt;(Page\|null)&gt;</code>
 
-Fetches the content for the page with the given slug.
+Fetches the content for the page with the given URL.
 
 **Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
 
 | Param | Type                |
 | ----- | ------------------- |
-| slug  | <code>String</code> |
+| url   | <code>String</code> |
 
 **Example**
 
@@ -105,15 +105,15 @@ const aboutPage = markdownPages.getPage('/about-us');
 
 <a name="MarkdownPages+getImage"></a>
 
-### markdownPages.getImage(slug) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
+### markdownPages.getImage(url) ⇒ <code>Promise.&lt;(Image\|null)&gt;</code>
 
-Fetches metadata for an image with the given slug.
+Fetches metadata for an image with the given URL.
 
 **Kind**: instance method of [<code>MarkdownPages</code>](#MarkdownPages)
 
 | Param | Type                |
 | ----- | ------------------- |
-| slug  | <code>String</code> |
+| url   | <code>String</code> |
 
 **Example**
 
@@ -146,7 +146,7 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 
 ## Options
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name             | Type                              | Default                          | Description                                                                                  |
@@ -160,7 +160,7 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 
 ## Page
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name               | Type                              | Description                                                                              |
@@ -169,7 +169,7 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 | fileName           | <code>String</code>               | The file base name                                                                       |
 | id                 | <code>String</code>               | A unique randomly generated ID for internal use                                          |
 | order              | <code>Number</code>               | The sort order taken from the file name or parent folder name                            |
-| slug               | <code>String</code>               | The generated URL path for the page                                                      |
+| url                | <code>String</code>               | The generated friendly URL for the page                                                  |
 | html               | <code>String</code>               | The transformed HTML content of the page                                                 |
 | text               | <code>String</code>               | The transformed text content of the page                                                 |
 | childIDs           | <code>Array.&lt;String&gt;</code> | The IDs of pages one level deeper in the navigation hierarchy                            |
@@ -185,7 +185,7 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 
 ## Image
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name     | Type                | Description                                     |
@@ -193,13 +193,13 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 | filePath | <code>String</code> | The full path to the file on disk               |
 | fileName | <code>String</code> | The file base name                              |
 | id       | <code>String</code> | A unique randomly generated ID for internal use |
-| slug     | <code>String</code> | The generated URL path for the page             |
+| url      | <code>String</code> | The generated friendly URL for the image        |
 
 <a name="Navigation"></a>
 
 ## Navigation
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name      | Type                                     | Description                                                                                            |
@@ -213,7 +213,7 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 
 ## TaxonomyOption
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name     | Type                 |
@@ -226,7 +226,7 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 
 ## Taxonomy
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name    | Type                                                         |
@@ -239,7 +239,7 @@ const pageData = markdownPages.getDataForPage(aboutPage);
 
 ## PageData
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name       | Type                                                                  | Description                                                                            |

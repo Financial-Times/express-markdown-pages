@@ -4,7 +4,7 @@
     "id": "001",
     "fileName": "index.md",
     "filePath": "pages/index.md",
-    "slug": "/",
+    "url": "/",
     "order": null,
     "childIDs": []
   },
@@ -13,7 +13,7 @@
     "id": "002",
     "fileName": "2. about us.md",
     "filePath": "pages/2. about us.md",
-    "slug": "/about-us",
+    "url": "/about-us",
     "order": 2,
     "parentID": "001",
     "childIDs": ["003"]
@@ -23,7 +23,7 @@
     "id": "003",
     "fileName": "index.md",
     "filePath": "pages/about-us/our-people/index.md",
-    "slug": "/about-us/our-people",
+    "url": "/about-us/our-people",
     "order": null,
     "parentID": "002",
     "childIDs": ["004", "005", "006"]
@@ -33,7 +33,7 @@
     "id": "004",
     "fileName": "Paige Pollard.md",
     "filePath": "pages/about-us/our-people/Paige Pollard.md",
-    "slug": "/about-us/our-people/paige-pollard",
+    "url": "/about-us/our-people/paige-pollard",
     "order": null,
     "parentID": "003",
     "childIDs": []
@@ -43,7 +43,7 @@
     "id": "005",
     "fileName": "Sneha Howell.md",
     "filePath": "pages/about-us/our-people/Sneha Howell.md",
-    "slug": "/about-us/our-people/sneha-howell",
+    "url": "/about-us/our-people/sneha-howell",
     "order": null,
     "parentID": "003",
     "childIDs": []
@@ -53,7 +53,7 @@
     "id": "006",
     "fileName": "Romeo Schmitt.md",
     "filePath": "pages/about-us/our-people/Romeo Schmitt.md",
-    "slug": "/about-us/our-people/romeo-schmitt",
+    "url": "/about-us/our-people/romeo-schmitt",
     "order": null,
     "parentID": "003",
     "childIDs": [],
@@ -64,7 +64,7 @@
     "id": "007",
     "fileName": "1. services.md",
     "filePath": "pages/1. services.md",
-    "slug": "/services",
+    "url": "/services",
     "order": 1,
     "parentID": "001",
     "childIDs": []
@@ -74,7 +74,7 @@
     "id": "008",
     "fileName": "3. contact us.md",
     "filePath": "pages/3. contact us.md",
-    "slug": "/contact-us",
+    "url": "/contact-us",
     "order": 3,
     "parentID": "001",
     "childIDs": []
@@ -84,7 +84,7 @@
     "id": "009",
     "fileName": "products.md",
     "filePath": "pages/products.md",
-    "slug": "/products",
+    "url": "/products",
     "hidden": true,
     "order": null,
     "redirect": "/services",

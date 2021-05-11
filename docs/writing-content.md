@@ -49,7 +49,7 @@ _Please note_ that the YAML implementation used supports [types] so ambiguous va
 
 Pages are organised into a folder hierarchy. Each folder is intended to group together pages which cover a related theme. As a minimum each folder _must_ contain an `index.md` file - if you do not create an [index pages](#index-pages) in every folder then the navigation hierarchy will not be fully populated.
 
-File and folder names can be written in upper or lower case and may contain spaces and special characters. These will all be translated into simplified friendly URLs.
+File and folder names can be written in upper or lower case and may contain spaces and special characters. These will all be translated into simplified [friendly URLs](https://en.wikipedia.org/wiki/Clean_URL).
 
 By default all pages are sorted and displayed in alphanumerical order but this can be overridden by prefixing names with a number followed by a period, for example `1. ZZ Top.md` and `2. Abba`. This forces the page to be sorted numerically. This number prefix will always be excluded from the page's URL.
 
