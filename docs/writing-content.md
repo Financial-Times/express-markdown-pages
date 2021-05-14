@@ -1,6 +1,6 @@
 # Writing content
 
-### Markdown
+## Markdown
 
 Markdown is a plain text format for writing structured documents. It is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
 
@@ -17,7 +17,7 @@ Useful resources:
 -   [Markdown Tutorial](https://commonmark.org/help/tutorial/)
 -   [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
 
-### Front matter
+## Front matter
 
 Front matter must be the first thing in each Markdown file and must take the form of valid [YAML](https://yaml.org/) set between triple-dashed lines. Here is a basic example:
 
@@ -45,7 +45,7 @@ _Please note_ that the YAML implementation used supports [types] so ambiguous va
 [yaml list]: https://en.wikipedia.org/wiki/YAML#Basic_components
 [types]: https://yaml.org/type/
 
-### File and folder names
+## File and folder names
 
 Pages are organised into a folder hierarchy. Each folder is intended to group together pages which cover a related theme. As a minimum each folder _must_ contain an `index.md` file - if you do not create an [index pages](#index-pages) in every folder then the navigation hierarchy will not be fully populated.
 
@@ -53,7 +53,7 @@ File and folder names can be written in upper or lower case and may contain spac
 
 By default all pages are sorted and displayed in alphanumerical order but this can be overridden by prefixing names with a number followed by a period, for example `1. ZZ Top.md` and `2. Abba`. This forces the page to be sorted numerically. This number prefix will always be excluded from the page's URL.
 
-### Index pages
+## Index pages
 
 Many web servers, such as Apache or IIS, will look for a file named `index` when a local directory is requested and if this file is not found then they can automatically generate a list of links to the files within.
 
@@ -63,7 +63,7 @@ Subsequently all other pages within the same directory will be considered childr
 
 In addition, index pages also have extra [page data](jsdoc.md#pagedata) properties which summarise any [tags and taxonomies](#tagging) used by the other pages in the directory. This taxonomy data can even be used to dynamically filter the pages by tag/s.
 
-### Tagging
+## Tagging
 
 Tags enable users to filter pages so they can quickly find what they need. For example, when viewing a long list of tools it may be useful to filter them by the programming language they are designed for. Tags are defined as lists in the YAML frontmatter.
 
@@ -82,7 +82,7 @@ The Frontmatter properties to interpret as taxonomies can be configured with [op
 
 _Please note_ that tags are case-sensitive so `Dogs` and `dogs` will not be considered equal.
 
-### Linking between pages
+## Linking between pages
 
 Links should work whether browsing content on GitHub, editing content locally, and when viewing the content rendered on a website. For this reason it is important to follow conventions to ensure all links work as intended across each environment.
 
@@ -94,7 +94,7 @@ teams run apps on [AWS EC2](./EC2.md) and use [IAM](../4.%20Security/IAM.md) to 
 
 _Please note_ that Markdown will not recognise [link destinations](https://spec.commonmark.org/0.29/#link-destination) with whitespace or line break characters so spaces in file or folder names must be [percent encoded](https://en.wikipedia.org/wiki/Percent-encoding) as `%20`.
 
-### Embedding images
+## Embedding images
 
 Just like links, images should work whether browsing content on GitHub, editing content locally, and when viewing content rendered on a website. Images can be uploaded to a third party service and referenced by URL or kept alongside your Markdown content and referenced locally.
 
@@ -108,7 +108,7 @@ Or stored alongside the content and referenced locally:
 ![alternative text](images/local-image.png)
 ```
 
-### Message blocks
+## Message blocks
 
 To highlight important or useful messages in your documentation you can use the following format to transform a blockquote into a colourful message block:
 
