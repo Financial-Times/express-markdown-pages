@@ -73,16 +73,14 @@ app.get('/docs*', markdownPages.middleware, (request, response) => {
 });
 ```
 
-Finally, we recommend initialising `MarkdownPages` on app startup. This is not strictly necessary but it will help you to spot any errors with your content and you can also store a reference to the created database for access later:
+Finally, we recommend initialising `MarkdownPages` on app startup. This is not strictly necessary but it will help you to spot any errors with your content:
 
 ```js
 try {
-	const db = await markdownPages.init();
-	const pageCount = db.getCollection('pages').count();
+	await markdownPages.init();
 
 	app.listen(PORT, () => {
 		console.log(`App listening on http://localhost:${PORT}`);
-		console.log(`Successfully loaded ${pageCount} pages`);
 	});
 } catch (error) {
 	console.error('The app failed to start: ', error);
@@ -90,7 +88,7 @@ try {
 }
 ```
 
-Now you're up and running you can get on with using [the data](#page-data) in your templates or carry on to the [JSDoc documentation](docs/jsdoc.md#MarkdownPages) for more examples.
+Now you're up and running you can get on with using [the data](#page-data) in your templates or carry on to the [documentation](docs/index.md) for more examples.
 
 [route handler]: https://expressjs.com/en/guide/routing.html#route-handlers
 
