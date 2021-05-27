@@ -110,7 +110,7 @@ function Crumbtrail({ navigation }) {
 
 ### Sitemaps
 
-This example uses the [Loki](http://techfort.github.io/LokiJS/) database created by Express Markdown Pages directly to get a reference to the top-level page, then recursively iterate from there to build a hierarchical structure representing all the pages:
+This example uses the [Loki](http://techfort.github.io/LokiJS/) database created by Express Markdown Pages directly to get a reference to the top-level page, then recursively iterates from there to build a hierarchical structure representing all of the pages:
 
 ```js
 function createSitemapFromPage(allPages, page) {
@@ -124,15 +124,15 @@ function createSitemapFromPage(allPages, page) {
 	return { title: page.title, url: page.url, children };
 }
 
-async function createSitemap(markdownPages) {
-	const db = await markdownPages.init();
-	const pages = db.getCollection('pages');
+function createSitemap(db) {
+	const allPages = db.getCollection('pages');
 	const homePage = pages.by('url', '/');
 
-	return createSitemapFromPage(pages, homePage);
+	return createSitemapFromPage(allPages, homePage);
 }
 
-console.dir(await createSitemap(db), { depth: Infinity });
+const db = await markdownPages.init();
+console.dir(createSitemap(db), { depth: Infinity });
 
 // outputs: {
 //   title: 'Home',
