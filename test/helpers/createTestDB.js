@@ -7,8 +7,8 @@ const imagesData = require('../fixtures/imagesData.json');
 module.exports = function createTestDB() {
 	const db = new Loki('test.db');
 
-	db.addCollection('pages').insert(pagesData);
-	db.addCollection('images').insert(imagesData);
+	db.addCollection('pages', { clone: true }).insert(pagesData);
+	db.addCollection('images', { clone: true }).insert(imagesData);
 
 	return db;
 };
