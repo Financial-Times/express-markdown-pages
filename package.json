@@ -31,7 +31,7 @@
     "supertest": "^6.1.2"
   },
   "dependencies": {
-    "debug": "^4.3.0",
+    "debug": "^4.3.2",
     "emoji-regex": "^9.2.2",
     "front-matter": "^4.0.2",
     "gemoji": "^6.1.0",
