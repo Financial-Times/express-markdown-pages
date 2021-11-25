@@ -46,7 +46,7 @@
     "pluralize": "^8.0.0",
     "proper-url-join": "^2.1.0",
     "qs": "^6.10.0",
-    "slugify": "^1.5.0",
+    "slugify": "^1.6.1",
     "throat": "^6.0.0"
   },
   "peerDependencies": {
