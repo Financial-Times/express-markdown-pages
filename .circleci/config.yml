@@ -9,7 +9,7 @@ references:
   #
   default_container_config: &default_container_config
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:14.18.3
 
   workspace_root: &workspace_root ~/project
 
