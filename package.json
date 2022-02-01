@@ -41,7 +41,7 @@
     "just-pick": "^2.2.0",
     "just-zip-it": "^2.1.0",
     "lokijs": "^1.5.12",
-    "marked": "^2.0.3",
+    "marked": "^4.0.10",
     "nanoid": "^3.1.31",
     "pluralize": "^8.0.0",
     "proper-url-join": "^2.1.0",
