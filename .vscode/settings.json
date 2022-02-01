@@ -1,4 +1,4 @@
 {
   // Enable type checking for JS
-  "javascript.implicitProjectConfig.checkJs": true
+  "js/ts.implicitProjectConfig.checkJs": true,
 }

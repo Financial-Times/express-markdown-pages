@@ -34,3 +34,7 @@ test: unit-test
 
 unit-test:
 	npx jest $(if $(CI),--runInBand,--watch)
+
+jsdoc:
+	npx jsdoc2md -c jsdoc.json -m none -g grouped \
+	lib/MarkdownPages.js lib/sharedTypes.js > docs/jsdoc.md

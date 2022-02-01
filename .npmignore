@@ -1,4 +1,6 @@
 **/__tests__/**
+docs/images/
+test/
 .circleci/
 .github/
 .vscode/
@@ -11,4 +13,5 @@
 .lintstagedrc.js
 .prettierignore
 .prettierrc.js
+jsdoc.json
 Makefile
