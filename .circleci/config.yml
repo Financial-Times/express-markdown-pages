@@ -132,7 +132,7 @@ workflows:
             - install
             - build
       - publish:
-          context: rel-eng-creds
+          context: npm-publish-token
           filters: *only_tagged_builds
           requires:
             - install
