@@ -139,3 +139,9 @@ workflows:
             - build
             - test
             - ft-snyk-orb/scan-js-packages
+      - ft-snyk-orb/scan-and-monitor-js-packages:
+          name: snyk-scan-and-monitor
+          context: rel-eng-creds
+          filters: *only_tagged_builds
+          requires:
+            - publish
