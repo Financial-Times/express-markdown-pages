@@ -22,9 +22,9 @@ c = a + b</code></pre>
 <p>And a test of HTML entities &amp; “smart quotes”</p>
 <p>And we also need to describe emoji characters like these:</p>
 <ul>
-<li>  <span role="img" aria-label="dog">🐶</span></li>
-<li>  <span role="img" aria-label="smile cat">😸</span></li>
-<li>  <span role="img" aria-label="hankey">💩</span></li>
+<li><span role="img" aria-label="dog">🐶</span></li>
+<li><span role="img" aria-label="smile cat">😸</span></li>
+<li><span role="img" aria-label="hankey">💩</span></li>
 </ul>
 "
 `;
