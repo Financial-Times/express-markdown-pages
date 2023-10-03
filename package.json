@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "debug": "^4.3.0",
-    "emoji-regex": "^9.2.2",
+    "emoji-regex": "^10.2.0",
     "front-matter": "^4.0.2",
     "gemoji": "^6.1.0",
     "glob": "^10.3.10",
