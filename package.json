@@ -35,7 +35,7 @@
     "emoji-regex": "^9.2.2",
     "front-matter": "^4.0.2",
     "gemoji": "^6.1.0",
-    "glob": "^7.1.6",
+    "glob": "^10.3.10",
     "html-entities": "^2.3.2",
     "is-object": "^1.0.2",
     "just-pick": "^2.2.0",
