@@ -62,7 +62,7 @@ jobs:
       - *restore_npm_cache
       - run:
           name: Install dependencies
-          command: HUSKY_SKIP_INSTALL=1 make install
+          command: npm ci
       - *create_npm_cache
       # - run:
       #     name: Fetch environment variables
