@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  ft-snyk-orb: financial-times/ft-snyk-orb@0
-
 references:
   #
   # Workspace
@@ -64,9 +61,6 @@ jobs:
           name: Install dependencies
           command: npm ci
       - *create_npm_cache
-      # - run:
-      #     name: Fetch environment variables
-      #     command: make env
       - persist_to_workspace:
           root: *workspace_root
           paths:
@@ -114,7 +108,6 @@ workflows:
   default-workflow:
     jobs:
       - install:
-          context: rel-eng-creds
           filters: *allow_all
       - build:
           filters: *allow_all
@@ -125,12 +118,6 @@ workflows:
           requires:
             - install
             - build
-      - ft-snyk-orb/scan-js-packages:
-          context: rel-eng-creds
-          filters: *only_branch_builds
-          requires:
-            - install
-            - build
       - publish:
           context: npm-publish-token
           filters: *only_tagged_builds
@@ -138,10 +125,3 @@ workflows:
             - install
             - build
             - test
-            - ft-snyk-orb/scan-js-packages
-      - ft-snyk-orb/scan-and-monitor-js-packages:
-          name: snyk-scan-and-monitor
-          context: rel-eng-creds
-          filters: *only_tagged_builds
-          requires:
-            - publish
