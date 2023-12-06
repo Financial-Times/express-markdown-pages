@@ -92,6 +92,8 @@ describe('integration test', () => {
 				.then(response => {
 					expect(response.body.page).toEqual(
 						expect.objectContaining({
+							createdDate: expect.any(String),
+							modifiedDate: expect.any(String),
 							html: expect.any(String),
 							text: expect.any(String),
 						}),
