@@ -103,8 +103,6 @@ jobs:
           #   if [[ $DIST_TAG ]]; then npm publish -- --access=public --tag=${DIST_TAG}; fi
 
 workflows:
-  version: 2
-
   default-workflow:
     jobs:
       - install:
