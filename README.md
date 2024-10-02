@@ -19,7 +19,7 @@ app.get('/*', markdownPages.middleware, (request, response) => {
 
 ## Installation
 
-This is package for [Node.js] and is available through the [npm] registry. Node 18 or higher is required.
+This is package for [Node.js] and is available through the [npm] registry. Node 20 or higher is required.
 
 Installation is done using the [npm install] command:
 
