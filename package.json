@@ -23,7 +23,7 @@
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/lokijs": "^1.5.14",
-    "express": "^4.17.0",
+    "express": "^5.2.1",
     "express-request-mock": "^4.0.0",
     "jest": "^30.3.0",
     "jsdoc-to-markdown": "^9.1.3",

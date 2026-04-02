@@ -9,7 +9,7 @@ module.exports = async function createTestApp() {
 		source: './docs',
 	});
 
-	app.get('*', markdownPages.middleware, (_, response) => {
+	app.get('*splat', markdownPages.middleware, (_, response) => {
 		response.send(response.locals.markdownPages);
 	});
 
