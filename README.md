@@ -9,7 +9,7 @@ const { MarkdownPages } = require('@financial-times/express-markdown-pages');
 
 const markdownPages = new MarkdownPages();
 
-app.get('/*', markdownPages.middleware, (request, response) => {
+app.get('/*splat', markdownPages.middleware, (request, response) => {
 	const html = myTemplate(response.locals.markdownPages);
 	response.send(html);
 });
@@ -56,19 +56,19 @@ const markdownPages = new MarkdownPages({
 Next, add a new route to your app to serve your Markdown pages from, please note this must end with an asterisk (`*`) so that Express knows to route all requests to URLs beginning with this path through the `MarkdownPages` middleware:
 
 ```js
-app.get('/docs*');
+app.get('/*docs');
 ```
 
 Next, add the `MarkdownPages` middleware to the route you just added:
 
 ```js
-app.get('/docs*', markdownPages.middleware);
+app.get('/*docs', markdownPages.middleware);
 ```
 
 Next, add a final [route handler] function. This function can use [the data](#page-data) added by the middleware to render your pages. Please note, if a page can't be found, or the incoming request is for an image file, then this function will not be called:
 
 ```js
-app.get('/docs*', markdownPages.middleware, (request, response) => {
+app.get('/*docs', markdownPages.middleware, (request, response) => {
 	response.send(response.locals.markdownPages);
 });
 ```

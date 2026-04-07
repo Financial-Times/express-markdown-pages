@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`lib/convertMarkdown .markdownToHTML() outputs HTML markup 1`] = `
 "<h1 id="python-basics">Python basics</h1>

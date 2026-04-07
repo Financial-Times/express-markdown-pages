@@ -31,7 +31,7 @@ const markdownPages = new MarkdownPages({
 
 app.get('/', require('./routes/homepage.js'));
 
-app.get('/pages*', markdownPages.middleware, require('./routes/pages.js'));
+app.get('/*pages', markdownPages.middleware, require('./routes/pages.js'));
 
 const init = async () => {
 	await markdownPages.init();
